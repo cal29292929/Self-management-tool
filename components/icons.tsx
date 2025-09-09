@@ -11,17 +11,17 @@ export const HomeIcon = createIcon(
     <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
 );
 
-export const PencilSquareIcon = createIcon(
+export const PencilSquareIcon = createIcon(<>
     <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" /><path fillRule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clipRule="evenodd" />
-);
+</>);
 
-export const BookOpenIcon = createIcon(
+export const BookOpenIcon = createIcon(<>
     <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM11 14a1 1 0 11-2 0 1 1 0 012 0zM11 10a1 1 0 11-2 0 1 1 0 012 0z" /><path fillRule="evenodd" d="M3.5 2A1.5 1.5 0 002 3.5v13A1.5 1.5 0 003.5 18h13a1.5 1.5 0 001.5-1.5v-13A1.5 1.5 0 0016.5 2h-13zm1.25 1.5a.75.75 0 000 1.5h9.5a.75.75 0 000-1.5h-9.5zm0 3a.75.75 0 000 1.5h9.5a.75.75 0 000-1.5h-9.5zm0 3a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z" clipRule="evenodd" />
-);
+</>);
 
-export const ChartBarIcon = createIcon(
+export const ChartBarIcon = createIcon(<>
     <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" /><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-);
+</>);
 
 export const RocketLaunchIcon = createIcon(
     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.75 7.065A5.003 5.003 0 004 9.5a5 5 0 005 5v-2a3 3 0 01-3-3V7.065zM10 4a5 5 0 00-2.935 9.242 5.003 5.003 0 007.87-7.87A5 5 0 0010 4z" clipRule="evenodd" />
