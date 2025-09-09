@@ -7,12 +7,14 @@ import JournalForm from './components/JournalForm';
 import DashboardView from './components/DashboardView';
 import AnalyticsView from './components/AnalyticsView';
 import PgaView from './components/PgaView';
+import SettingsModal from './components/SettingsModal';
 import { DUMMY_ENTRIES } from './constants';
 
 export default function App() {
     const [currentView, setCurrentView] = useState<View>(View.Home);
     const [entries, setEntries] = useState<CbtEntry[]>([]);
     const [goals, setGoals] = useState<PgaGoal[]>([]);
+    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
     const addEntry = useCallback((entry: {
         timestamp: string;
@@ -114,11 +116,19 @@ export default function App() {
     return (
         <div className="font-sans bg-gray-50 min-h-screen p-4 sm:p-8 flex flex-col items-center" style={{ fontFamily: "'Inter', 'Noto Sans JP', sans-serif" }}>
             <div className="w-full max-w-4xl space-y-8">
-                <Header currentView={currentView} setCurrentView={setCurrentView} />
+                <Header 
+                  currentView={currentView} 
+                  setCurrentView={setCurrentView} 
+                  onOpenSettings={() => setIsSettingsOpen(true)}
+                />
                 <main>
                     {renderContent()}
                 </main>
             </div>
+            <SettingsModal 
+              isOpen={isSettingsOpen} 
+              onClose={() => setIsSettingsOpen(false)} 
+            />
         </div>
     );
 }

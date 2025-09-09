@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "node build.mjs"
+    "build": "mkdir -p dist && esbuild index.tsx --bundle --outfile=dist/bundle.js --platform=browser && cp index.html dist/"
   },
   "dependencies": {
     "@google/genai": "^1.17.0",
