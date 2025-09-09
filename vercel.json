@@ -1,0 +1,9 @@
+{
+  "buildCommand": "npm install && npm run build",
+  "rewrites": [
+    {
+      "source": "/((?!dist/|api/|vite.svg).*)",
+      "destination": "/index.html"
+    }
+  ]
+}

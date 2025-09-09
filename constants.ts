@@ -1,0 +1,13 @@
+
+export const DUMMY_ENTRIES = [
+    { situation: '朝の通勤電車が遅れた', mood: 'イライラ', rating: 2, negativeThought: '今日は最悪な日になりそうだ', evidenceFor: '電車が遅れて会議に間に合わないかもしれない', evidenceAgainst: '会議はまだ始まっていないし、連絡はしてある', balancedThought: '電車の遅延は自分のせいじゃない。落ち着いて今できることに集中しよう。', custom_睡眠時間: '6時間', custom_運動: 'なし'},
+    { situation: '上司から厳しいフィードバックを受けた', mood: '落ち込み', rating: 1, negativeThought: '自分は仕事ができない人間だ', evidenceFor: '上司は具体的な改善点をいくつも指摘した', evidenceAgainst: '上司は私の成長を期待してアドバイスをくれた。他のプロジェクトでは成功もしている。', balancedThought: 'フィードバックは成長の機会。改善点を明確にして、次につなげよう。', custom_睡眠時間: '7時間', custom_運動: 'ウォーキング'},
+    { situation: '友人からのメッセージに返信が来ない', mood: '不安', rating: 2, negativeThought: '私、何か悪いこと言ったかな？嫌われたのかもしれない。', evidenceFor: '最後のメッセージから数時間経っている', evidenceAgainst: '友人はただ忙しいだけかもしれないし、返信が遅いことはよくある。', balancedThought: '相手の状況を勝手に想像して不安になるのはやめよう。気長に待ってみよう。', custom_睡眠時間: '8時間', custom_運動: 'なし'},
+    { situation: 'プレゼンテーションで緊張して言葉に詰まった', mood: '恥ずかしい', rating: 2, negativeThought: 'みんなにバカにされたに違いない。完璧にできなかった。', evidenceFor: '何度か言葉に詰まった瞬間があった', evidenceAgainst: '参加者は真剣に話を聞いてくれていたし、発表後の質問も多くて興味を持ってくれたようだった。', balancedThought: '完璧でなくても、伝えたいことは伝わったはず。次回はもっと準備して臨もう。', custom_睡眠時間: '6時間', custom_運動: 'なし'},
+    { situation: '休日に特に何も予定がない', mood: '退屈', rating: 3, negativeThought: '自分はつまらない人間だから、誰も誘ってくれないんだ', evidenceFor: '特に誘いの連絡はない', evidenceAgainst: '自分で誘うこともできるし、一人で楽しめる趣味もたくさんある。', balancedThought: '誰かに頼るのではなく、自分で時間を有意義に使う方法を見つけよう。', custom_睡眠時間: '7時間', custom_運動: 'ジョギング'},
+    { situation: '健康診断の結果で少し気になる項目があった', mood: '心配', rating: 2, negativeThought: '深刻な病気かもしれない', evidenceFor: '基準値から少し外れていた', evidenceAgainst: 'まだ精密検査が必要なレベルではない。専門医のアドバイスをきちんと聞こう。', balancedThought: '必要以上に不安になるのはやめて、冷静に次のステップを考えよう。', custom_睡眠時間: '7時間', custom_運動: 'なし'},
+    { situation: '新しいことに挑戦しようとしている', mood: '興奮', rating: 5, negativeThought: '', evidenceFor: '', evidenceAgainst: '', balancedThought: '', custom_睡眠時間: '8時間', custom_運動: '筋トレ'},
+    { situation: '仕事で小さなミスをしてしまった', mood: '後悔', rating: 1, negativeThought: 'またやってしまった。どうしてこんな簡単なこともできないんだろう。', evidenceFor: 'ミスをしたという事実がある', evidenceAgainst: '誰もがミスをする。このミスから学んで、次に活かせばいい。', balancedThought: 'このミスを教訓に、次はどうすれば防げるか考えよう。', custom_睡眠時間: '5時間', custom_運動: 'なし'},
+    { situation: 'カフェで注文を間違えられた', mood: '不満', rating: 2, negativeThought: '店員さんは私のことを聞いていなかったんだ', evidenceFor: '注文したものと違うものが来た', evidenceAgainst: '忙しい時間帯だった。単なる間違いかもしれない。', balancedThought: '丁寧に伝えれば良いだけのこと。落ち着いて伝え直そう。', custom_睡眠時間: '7時間', custom_運動: 'なし'},
+    { situation: '友人との会話で話が合わなかった', mood: '孤独', rating: 2, negativeThought: 'この人とはもう分かり合えないな', evidenceFor: '話のテンポがずれたり、意見が食い違ったりした', evidenceAgainst: '違う意見を持つことは悪いことじゃない。むしろ新しい発見があるかも。', balancedThought: '意見が違うのは当たり前。相手の考えを尊重しよう。', custom_睡眠時間: '6時間', custom_運動: 'なし'},
+];
