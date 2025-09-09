@@ -1,12 +1,11 @@
 
 import React from 'react';
 import { View } from '../types';
-import { HomeIcon, PencilSquareIcon, BookOpenIcon, ChartBarIcon, RocketLaunchIcon, Cog6ToothIcon } from './icons';
+import { HomeIcon, PencilSquareIcon, BookOpenIcon, ChartBarIcon, RocketLaunchIcon } from './icons';
 
 interface HeaderProps {
     currentView: View;
     setCurrentView: (view: View) => void;
-    onSettingsClick: () => void;
 }
 
 const NavButton: React.FC<{
@@ -29,7 +28,7 @@ const NavButton: React.FC<{
     </button>
 );
 
-const Header: React.FC<HeaderProps> = ({ currentView, setCurrentView, onSettingsClick }) => {
+const Header: React.FC<HeaderProps> = ({ currentView, setCurrentView }) => {
     return (
         <header className="bg-white rounded-xl shadow-lg p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 border border-gray-200">
             <div className="flex items-center space-x-2">
@@ -46,14 +45,6 @@ const Header: React.FC<HeaderProps> = ({ currentView, setCurrentView, onSettings
                     <NavButton label="分析" view={View.Analytics} currentView={currentView} onClick={setCurrentView} icon={<ChartBarIcon />} />
                     <NavButton label="目標達成" view={View.Pga} currentView={currentView} onClick={setCurrentView} icon={<RocketLaunchIcon />} />
                 </nav>
-                 <button
-                    onClick={onSettingsClick}
-                    className="p-2 rounded-lg text-gray-600 hover:bg-indigo-100 hover:text-indigo-600 transition-all duration-200"
-                    aria-label="設定"
-                    title="設定"
-                >
-                    <Cog6ToothIcon />
-                </button>
             </div>
         </header>
     );

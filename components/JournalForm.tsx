@@ -7,10 +7,9 @@ import { PlusIcon, SparklesIcon, XCircleIcon } from './icons';
 interface JournalFormProps {
     addEntry: (entry: Omit<CbtEntry, 'id'>) => void;
     entries: CbtEntry[];
-    apiKey: string;
 }
 
-const JournalForm: React.FC<JournalFormProps> = ({ addEntry, entries, apiKey }) => {
+const JournalForm: React.FC<JournalFormProps> = ({ addEntry, entries }) => {
     const [situation, setSituation] = useState('');
     const [mood, setMood] = useState('');
     const [rating, setRating] = useState(3);
@@ -74,10 +73,6 @@ const JournalForm: React.FC<JournalFormProps> = ({ addEntry, entries, apiKey }) 
     };
     
     const handleGeminiAssist = async () => {
-        if (!apiKey) {
-            setMessage('Geminiを利用するにはAPIキーの設定が必要です。ヘッダーの設定アイコンから登録してください。');
-            return;
-        }
         if (!negativeThought) {
             setMessage('ネガティブ思考を入力してください。');
             return;
@@ -86,7 +81,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ addEntry, entries, apiKey }) 
         setApiLoading(true);
         setMessage('');
         try {
-            const result = await getBalancedThought({ situation, mood, rating, negativeThought }, apiKey);
+            const result = await getBalancedThought({ situation, mood, rating, negativeThought });
             setBalancedThought(result);
             setMessage('Geminiがバランスの取れた思考を提案しました！');
         } catch (error) {
@@ -160,7 +155,7 @@ const JournalForm: React.FC<JournalFormProps> = ({ addEntry, entries, apiKey }) 
                         <label htmlFor="balancedThought" className="block text-sm font-medium text-gray-700">よりバランスの取れた思考</label>
                         <textarea id="balancedThought" value={balancedThought} onChange={(e) => setBalancedThought(e.target.value)} placeholder="両方の証拠を考慮して、新しい考え方を見つけましょう。" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm p-2 h-24"/>
                     </div>
-                    <button type="button" onClick={handleGeminiAssist} disabled={apiLoading || formLoading || !apiKey} className="w-full flex items-center justify-center space-x-2 bg-emerald-500 text-white py-2 px-4 rounded-md hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 transition-colors duration-200 mt-4 disabled:bg-emerald-300 disabled:cursor-not-allowed" title={!apiKey ? 'APIキーを設定してください' : ''}>
+                    <button type="button" onClick={handleGeminiAssist} disabled={apiLoading || formLoading} className="w-full flex items-center justify-center space-x-2 bg-emerald-500 text-white py-2 px-4 rounded-md hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 transition-colors duration-200 mt-4 disabled:bg-emerald-300 disabled:cursor-not-allowed">
                         <SparklesIcon /><span>{apiLoading ? '提案を作成中...' : 'Geminiに思考のバランスを見つけてもらう'}</span>
                     </button>
                 </div>

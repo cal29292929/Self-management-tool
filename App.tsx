@@ -7,30 +7,12 @@ import JournalForm from './components/JournalForm';
 import DashboardView from './components/DashboardView';
 import AnalyticsView from './components/AnalyticsView';
 import PgaView from './components/PgaView';
-import SettingsModal from './components/SettingsModal';
 import { DUMMY_ENTRIES } from './constants';
 
 export default function App() {
     const [currentView, setCurrentView] = useState<View>(View.Home);
     const [entries, setEntries] = useState<CbtEntry[]>([]);
     const [goals, setGoals] = useState<PgaGoal[]>([]);
-    const [apiKey, setApiKey] = useState<string>('');
-    const [isSettingsOpen, setIsSettingsOpen] = useState(false);
-
-    useEffect(() => {
-        const storedApiKey = localStorage.getItem('gemini-api-key');
-        if (storedApiKey) {
-            setApiKey(storedApiKey);
-        } else {
-            setIsSettingsOpen(true); // 初回起動時にモーダルを開く
-        }
-    }, []);
-
-    const handleSaveApiKey = (newApiKey: string) => {
-        setApiKey(newApiKey);
-        localStorage.setItem('gemini-api-key', newApiKey);
-        setIsSettingsOpen(false);
-    };
 
     const addEntry = useCallback((entry: {
         timestamp: string;
@@ -110,11 +92,11 @@ export default function App() {
     const renderContent = () => {
         switch (currentView) {
             case View.Journal:
-                return <JournalForm addEntry={addEntry} entries={entries} apiKey={apiKey} />;
+                return <JournalForm addEntry={addEntry} entries={entries} />;
             case View.Dashboard:
                 return <DashboardView entries={entries} deleteEntry={deleteEntry} addDummyEntries={addDummyEntries} />;
             case View.Analytics:
-                return <AnalyticsView entries={entries} apiKey={apiKey} />;
+                return <AnalyticsView entries={entries} />;
             case View.Pga:
                 return <PgaView
                     goals={goals}
@@ -132,17 +114,10 @@ export default function App() {
     return (
         <div className="font-sans bg-gray-50 min-h-screen p-4 sm:p-8 flex flex-col items-center" style={{ fontFamily: "'Inter', 'Noto Sans JP', sans-serif" }}>
             <div className="w-full max-w-4xl space-y-8">
-                <Header currentView={currentView} setCurrentView={setCurrentView} onSettingsClick={() => setIsSettingsOpen(true)} />
+                <Header currentView={currentView} setCurrentView={setCurrentView} />
                 <main>
                     {renderContent()}
                 </main>
-                {isSettingsOpen && (
-                    <SettingsModal
-                        currentApiKey={apiKey}
-                        onSave={handleSaveApiKey}
-                        onClose={() => setIsSettingsOpen(false)}
-                    />
-                )}
             </div>
         </div>
     );

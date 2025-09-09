@@ -11,7 +11,7 @@ const formatDateForChart = (dateString: string) => {
     return date.toLocaleDateString('ja-JP', { month: 'numeric', day: 'numeric' });
 };
 
-const AnalyticsView: React.FC<{ entries: CbtEntry[], apiKey: string }> = ({ entries, apiKey }) => {
+const AnalyticsView: React.FC<{ entries: CbtEntry[] }> = ({ entries }) => {
     const [analysisLoading, setAnalysisLoading] = useState(false);
     const [geminiAnalysisResult, setGeminiAnalysisResult] = useState('');
     const [message, setMessage] = useState('');
@@ -36,10 +36,6 @@ const AnalyticsView: React.FC<{ entries: CbtEntry[], apiKey: string }> = ({ entr
     }, [entries]);
 
     const handleGeminiAnalysis = async () => {
-        if (!apiKey) {
-            setMessage('Geminiを利用するにはAPIキーの設定が必要です。ヘッダーの設定アイコンから登録してください。');
-            return;
-        }
         if (entries.length === 0) {
             setMessage('分析には記録が必要です。');
             return;
@@ -50,7 +46,7 @@ const AnalyticsView: React.FC<{ entries: CbtEntry[], apiKey: string }> = ({ entr
         setMessage('');
 
         try {
-            const result = await getEntriesAnalysis(entries, apiKey);
+            const result = await getEntriesAnalysis(entries);
             setGeminiAnalysisResult(result);
             setMessage('Geminiが記録を分析しました！');
         } catch (error) {
@@ -110,17 +106,11 @@ const AnalyticsView: React.FC<{ entries: CbtEntry[], apiKey: string }> = ({ entr
                 <p className="text-sm text-gray-600">過去10件の記録をもとに、傾向とアドバイスを提案します。</p>
                 <button
                     onClick={handleGeminiAnalysis}
-                    disabled={analysisLoading || entries.length === 0 || !apiKey}
+                    disabled={analysisLoading || entries.length === 0}
                     className="w-full flex items-center justify-center space-x-2 bg-emerald-500 text-white py-2 px-4 rounded-md hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 transition-colors duration-200 disabled:bg-emerald-300 disabled:cursor-not-allowed"
-                    title={!apiKey ? 'APIキーを設定してください' : ''}
                 >
                     <span>{analysisLoading ? '分析中...' : '記録を分析してもらう'}</span>
                 </button>
-                 {!apiKey && (
-                     <p className="text-center text-sm text-yellow-700 bg-yellow-50 p-3 rounded-md border border-yellow-200">
-                        Geminiによる分析を利用するには、APIキーの設定が必要です。右上の<strong className="font-semibold">設定</strong>アイコンから登録してください。
-                    </p>
-                )}
                 {geminiAnalysisResult && (
                     <div className="mt-4 p-4 bg-gray-100 rounded-lg whitespace-pre-wrap text-sm leading-relaxed" dangerouslySetInnerHTML={{ __html: geminiAnalysisResult.replace(/\n/g, '<br />') }}>
                     </div>
